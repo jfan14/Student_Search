@@ -18,23 +18,31 @@ public class Main {
         arr[3] = s4;
         arr[4] = s5;
 
-
+        //Logic Block
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Please Enter the prn you want to search: ");
-        int prn = Integer.parseInt(br.readLine());
-        int counter = 0;
-        for(Student s : arr) {
-            if(s.getPrn() == prn) {
-                System.out.println(s.toString());
-                break;
-            }else {
-                counter++;
-                continue;
-            }
 
-        }
-        if(counter >= arr.length) {
-            System.out.println("No data Found for prn: " + prn);
+        int prn = 0;
+        while(prn != -1) {
+            System.out.println("Please Enter the prn you want to search, enter -1 to quit");
+            try {
+                prn = Integer.parseInt(br.readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Input type wrong");
+            }
+            int counter = 0;
+            for (Student s : arr) {
+                if (s.getPrn() == prn) {
+                    System.out.println(s.toString());
+                    break;
+                } else {
+                    counter++;
+                    continue;
+                }
+
+            }
+            if (counter >= arr.length && prn != -1) {
+                System.out.println("No data Found for entered prn");
+            }
         }
     }
 }
